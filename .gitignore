@@ -1,3 +1,6 @@
+API/
+.idea/
+__pycache__/
 *.log
 token.pickle
 credentials.json
