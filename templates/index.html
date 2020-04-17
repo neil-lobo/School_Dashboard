@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}My Dashboard{% endblock %}
+
+{% block content %}
+	<div class="info_card" id="weather">
+		<div id="temperature">
+			<p>{{ temperatures["temp"] }}&degC</p>
+		</div>
+		<div id="high-low">
+			<p>{{ temperatures["min"] }}&degC &#124 {{ temperatures["max"] }}&degC</p>
+		</div>
+		<div id="icons">
+			{% for condition in conditions %}
+				<img class="weather_image" src="http://openweathermap.org/img/wn/{{ condition['icon'] }}@2x.png">
+			{% endfor %}
+		</div>
+		<div id="conditions">
+			<ul>
+				{% for condition in conditions %}
+					<li> {{ condition["description"] }} </li>
+				{% endfor %}
+			</ul>
+		</div>
+		<!-- <p class="info">current weather: {{weather}}</p> -->
+	</div>
+	<div class="info_card" id="calender">
+		<div id="classes_title">
+			<p class="info">Today's Classes:</p>
+		</div>
+		<div id="classes">
+			<ul>
+				{% if events %}
+					{% for event in events %}
+						<li>
+							<div style="background-color: {{ event['colour'] }}">
+								<p class="class_time"> {{ event["datetime"]["time"][:5] }} </p>
+								<p class="class_name"> {{ event["event"] }} </p>
+							</div>
+						</li>
+					{% endfor %}
+				{% else %}
+					<li><div style="background-color: grey"><p class="class_time">No Classes</p></div></li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+	<div class="info_card" id="evernote">
+		<p class="info">FREE SPACE FOR NEW PANEL</p>
+	</div>
+{% endblock %}

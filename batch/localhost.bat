@@ -1,0 +1,2 @@
+start chrome localhost
+exit
